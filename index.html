@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アプリストアリダイレクト</title>
+    <script>
+        function redirectToAppStore() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // iOSデバイスの検出
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://apps.apple.com/jp/app/yahoo-%E5%A4%A9%E6%B0%97/id521974902";
+            }
+            // Androidデバイスの検出
+            else if (/android/i.test(userAgent)) {
+                window.location.href = "https://play.google.com/store/apps/details?id=jp.co.yahoo.android.weather.type1&pcampaignid=web_share";
+            }
+            // その他のデバイスの場合
+            else {
+                document.getElementById('message').innerHTML = "このページはモバイルデバイス用です。iPhoneまたはAndroidデバイスでアクセスしてください。";
+            }
+        }
+    </script>
+</head>
+<body onload="redirectToAppStore()">
+    <div id="message"></div>
+</body>
+</html>
